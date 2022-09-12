@@ -1,12 +1,15 @@
-import EventDashboard from "../../features/events/eventDashboard/EventDashboard";
+import EventDashboard from "../../features/events/EventDashboard";
 import TopHeader from "../../features/nav/TopNavbar";
+import { Container } from "semantic-ui-react";
 import "./styles.css";
 
 const App = () => {
   return (
     <>
       <TopHeader />
-      <EventDashboard />
+      <Container className="main">
+        <EventDashboard />
+      </Container>
     </>
   );
 };

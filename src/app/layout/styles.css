@@ -1,9 +1,6 @@
-html, body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+html {
+  height: auto !important;
 }
-
-:root {
-  --header-color: '#5829bb';
+.ui.main.container {
+  margin-top: 71px;
 }
