@@ -1,4 +1,4 @@
-import { Segment, Item, Icon, List, Button } from "semantic-ui-react";
+import { Segment, Item, Icon, Button } from "semantic-ui-react";
 import EventAtendees from "./EventAttendees";
 
 const EventItem = () => {
@@ -32,7 +32,7 @@ const EventItem = () => {
           scrambled it to make a type specimen book. It has survived not only
           five centuries
         </p>
-        <Button color="black" content="View" floated="right" />
+        <Button color="violet" content="View" floated="right" />
       </Segment>
     </Segment.Group>
   );

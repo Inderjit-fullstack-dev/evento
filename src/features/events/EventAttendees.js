@@ -3,13 +3,13 @@ const EventAtendees = () => {
   return (
     <List horizontal>
       <List.Item>
-        <Image circular src="/assets/images/user.png" size="mini" />
+        <Image circular={true} src="/assets/images/user.png" size="mini" />
       </List.Item>
       <List.Item>
-        <Image circular src="/assets/images/user.png" size="mini" />
+        <Image circular={true} src="/assets/images/user.png" size="mini" />
       </List.Item>
       <List.Item>
-        <Image circular src="/assets/images/user.png" size="mini" />
+        <Image circular={true} src="/assets/images/user.png" size="mini" />
       </List.Item>
     </List>
   );

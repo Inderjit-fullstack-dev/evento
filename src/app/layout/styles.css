@@ -1,6 +1,9 @@
 html {
   height: auto !important;
 }
+body {
+  background-color: #f5f6fa !important;
+}
 .ui.main.container {
   margin-top: 71px;
 }
