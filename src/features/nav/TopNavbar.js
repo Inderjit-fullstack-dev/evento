@@ -1,18 +1,21 @@
-import { Menu, Container, Button } from "semantic-ui-react";
+import { Menu, Container, Button, MenuItem } from "semantic-ui-react";
 
-const TopHeader = () => {
+const TopNavbar = ({ handleSetForm }) => {
   return (
     <Menu inverted fixed="top" secondary color="violet">
       <Container>
         <Menu.Item header>
-          <img src="/assets/images/logo.png" />
+          <img src="/assets/images/logo.png" alt="Evento" />
+        </Menu.Item>
+        <MenuItem name="Home" />
+        <Menu.Item>
+          <Button
+            content="Create Event"
+            inverted
+            onClick={() => handleSetForm(true)}
+          />
         </Menu.Item>
         <Menu.Menu position="right">
-          {/* 
-          <Menu.Item name="Events" />
-          <Menu.Item>
-            <Button content="Create an Event" positive inverted />
-          </Menu.Item> */}
           <Menu.Item>
             <Button content="Login" inverted />
             <Button content="Signup" inverted style={{ marginLeft: "5px" }} />
@@ -23,4 +26,4 @@ const TopHeader = () => {
   );
 };
 
-export default TopHeader;
+export default TopNavbar;

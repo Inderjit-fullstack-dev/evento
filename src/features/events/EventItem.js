@@ -1,38 +1,32 @@
 import { Segment, Item, Icon, Button } from "semantic-ui-react";
 import EventAtendees from "./EventAttendees";
 
-const EventItem = () => {
+const EventItem = ({ event }) => {
   return (
     <Segment.Group>
       <Segment>
         <Item.Group>
           <Item>
-            <Item.Image circular size="tiny" src="/assets/images/user.png" />
+            <Item.Image circular size="tiny" src={event.hostPhotoURL} />
             <Item.Content>
-              <Item.Header as="h3">Event Name</Item.Header>
-              <Item.Extra>Hosted By: Inderjit Singh</Item.Extra>
+              <Item.Header as="h3">{event.title}</Item.Header>
+              <Item.Extra>Hosted By: {event.hostedBy}</Item.Extra>
             </Item.Content>
           </Item>
         </Item.Group>
       </Segment>
       <Segment>
         <span>
-          <Icon name="clock" />
-          <Icon name="marker" />
+          <Icon name="clock" /> {event.date}
+          <Icon name="marker" /> {event.venue}
         </span>
       </Segment>
       <Segment>
-        <EventAtendees />
+        <EventAtendees attendees={event.attendees} />
       </Segment>
       <Segment clearing>
-        <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries
-        </p>
-        <Button color="violet" content="View" floated="right" />
+        <p>{event.description}</p>
+        <Button color="black" content="View" floated="right" />
       </Segment>
     </Segment.Group>
   );

@@ -1,14 +1,19 @@
 import EventDashboard from "../../features/events/EventDashboard";
-import TopHeader from "../../features/nav/TopNavbar";
+import TopNavbar from "../../features/nav/TopNavbar";
 import { Container } from "semantic-ui-react";
+import { useState } from "react";
 import "./styles.css";
 
 const App = () => {
+  const [formOpen, setFormOpen] = useState(true);
   return (
     <>
-      <TopHeader />
+      <TopNavbar handleSetForm={() => setFormOpen(true)} />
       <Container className="main">
-        <EventDashboard />
+        <EventDashboard
+          formOpen={formOpen}
+          handleSetForm={() => setFormOpen(false)}
+        />
       </Container>
     </>
   );
