@@ -3,9 +3,8 @@ import EventItem from "./EventItem";
 const EventList = ({ events }) => {
   return (
     <>
-      {events.map((event) => (
-        <EventItem event={event} key={event.id} />
-      ))}
+      {events &&
+        events.map((event) => <EventItem event={event} key={event.id} />)}
     </>
   );
 };

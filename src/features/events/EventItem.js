@@ -21,12 +21,14 @@ const EventItem = ({ event }) => {
           <Icon name="marker" /> {event.venue}
         </span>
       </Segment>
-      <Segment>
-        <EventAtendees attendees={event.attendees} />
-      </Segment>
+      {event?.attendees && (
+        <Segment>
+          <EventAtendees attendees={event.attendees} />
+        </Segment>
+      )}
       <Segment clearing>
         <p>{event.description}</p>
-        <Button color="black" content="View" floated="right" />
+        <Button color="violet" size="tiny" content="View" floated="right" />
       </Segment>
     </Segment.Group>
   );

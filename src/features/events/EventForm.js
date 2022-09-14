@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Segment, Header, Form, Button } from "semantic-ui-react";
 
-const EventForm = ({ formOpen, handleSetForm }) => {
+const EventForm = ({ formOpen, handleSetForm, onFormSubmit }) => {
   const initialState = {
-    name: "",
+    title: "",
     date: "",
     city: "",
     venue: "",
@@ -11,13 +11,17 @@ const EventForm = ({ formOpen, handleSetForm }) => {
     category: "",
   };
   const [values, setValues] = useState(initialState);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
   };
+
   const handleSubmit = () => {
-    console.log(values);
+    onFormSubmit(values);
+    setValues(initialState);
   };
+
   return (
     formOpen && (
       <Segment clearing={true}>
@@ -34,12 +38,12 @@ const EventForm = ({ formOpen, handleSetForm }) => {
             />
           </Form.Field>
           <Form.Field>
-            <label htmlFor="name">Name</label>
+            <label htmlFor="title">Name</label>
             <input
               type="text"
-              name="name"
-              id="name"
-              value={values.name}
+              name="title"
+              id="title"
+              value={values.title}
               onChange={handleInputChange}
             />
           </Form.Field>
@@ -86,7 +90,7 @@ const EventForm = ({ formOpen, handleSetForm }) => {
             />
           </Form.Field>
           <Button content="Close" floated="right" onClick={handleSetForm} />
-          <Button color="black" content="Add Event" floated="right" />
+          <Button color="violet" content="Add Event" floated="right" />
         </Form>
       </Segment>
     )
