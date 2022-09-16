@@ -1,7 +1,16 @@
+import { useDispatch } from "react-redux";
 import { Segment, Item, Icon, Button } from "semantic-ui-react";
+import { setSelectedEvent } from "../../core/redux/slices/eventSlice";
 import EventAtendees from "./EventAttendees";
 
 const EventItem = ({ event }) => {
+  const dispatch = useDispatch();
+  const handleSelectEvent = (event) => {
+    if (event) {
+      dispatch(setSelectedEvent(event));
+    }
+  };
+
   return (
     <Segment.Group>
       <Segment>
@@ -28,7 +37,14 @@ const EventItem = ({ event }) => {
       )}
       <Segment clearing>
         <p>{event.description}</p>
-        <Button color="violet" size="tiny" content="View" floated="right" />
+        <Button
+          color="violet"
+          size="tiny"
+          content="Edit"
+          floated="right"
+          icon="edit"
+          onClick={() => handleSelectEvent(event)}
+        />
       </Segment>
     </Segment.Group>
   );

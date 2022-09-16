@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Segment, Header, Form, Button } from "semantic-ui-react";
 
 const EventForm = ({ formOpen, handleSetForm, onFormSubmit }) => {
-  const initialState = {
+  const dispatch = useDispatch();
+  const selectedEvent = useSelector((state) => state.event.selectedEvent);
+
+  const initialState = selectedEvent ?? {
     title: "",
     date: "",
     city: "",
@@ -21,6 +25,10 @@ const EventForm = ({ formOpen, handleSetForm, onFormSubmit }) => {
     onFormSubmit(values);
     setValues(initialState);
   };
+
+  useEffect(() => {
+    console.log("event form", selectedEvent);
+  }, [selectedEvent?.id]);
 
   return (
     formOpen && (
