@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Segment, Header, Form, Button } from "semantic-ui-react";
+import { addEvent, updateEvent } from "../../core/redux/slices/eventSlice";
 
 const EventForm = ({ formOpen, handleSetForm, onFormSubmit }) => {
   const dispatch = useDispatch();
   const selectedEvent = useSelector((state) => state.event.selectedEvent);
 
-  const initialState = selectedEvent ?? {
+  const initialState = {
     title: "",
     date: "",
     city: "",
@@ -14,6 +15,7 @@ const EventForm = ({ formOpen, handleSetForm, onFormSubmit }) => {
     description: "",
     category: "",
   };
+
   const [values, setValues] = useState(initialState);
 
   const handleInputChange = (e) => {
@@ -22,18 +24,29 @@ const EventForm = ({ formOpen, handleSetForm, onFormSubmit }) => {
   };
 
   const handleSubmit = () => {
-    onFormSubmit(values);
-    setValues(initialState);
+    //onFormSubmit(values);
+    if (selectedEvent) {
+      dispatch(updateEvent({ id: values.id, data: values }));
+    } else {
+      dispatch(addEvent(values));
+      setValues(initialState);
+    }
   };
 
   useEffect(() => {
-    console.log("event form", selectedEvent);
+    if (selectedEvent) {
+      setValues(selectedEvent);
+    }
   }, [selectedEvent?.id]);
+
+  const getFormLabel = () => {
+    return selectedEvent ? "Update" : "Create";
+  };
 
   return (
     formOpen && (
       <Segment clearing={true}>
-        <Header content="Create new Event" />
+        <Header content={`${getFormLabel()} Event`} />
         <Form onSubmit={handleSubmit}>
           <Form.Field>
             <label htmlFor="category">Category</label>
@@ -98,7 +111,11 @@ const EventForm = ({ formOpen, handleSetForm, onFormSubmit }) => {
             />
           </Form.Field>
           <Button content="Close" floated="right" onClick={handleSetForm} />
-          <Button color="violet" content="Add Event" floated="right" />
+          <Button
+            color="black"
+            content={`${getFormLabel()} Event`}
+            floated="right"
+          />
         </Form>
       </Segment>
     )
