@@ -1,4 +1,4 @@
-import { Button, Grid, Header, Image, Item, Segment } from "semantic-ui-react";
+import { Button, Header, Image, Item, Segment } from "semantic-ui-react";
 const EventDetailHeader = () => {
   return (
     <Segment.Group>

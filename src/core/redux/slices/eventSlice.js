@@ -23,11 +23,11 @@ const eventsSlice = createSlice({
     deleteEvent: (state, action) => {
       return {
         ...state,
-        events: state.events.filter((e) => e.id != action.payload),
+        events: state.events.filter((e) => e.id !== action.payload),
       };
     },
     updateEvent: (state, action) => {
-      const event = state.events.find((x) => x.id === action.payload.id);
+      //const event = state.events.find((x) => x.id === action.payload.id);
       return {
         ...state,
         events: [...state.events],

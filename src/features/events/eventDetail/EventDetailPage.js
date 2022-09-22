@@ -1,4 +1,4 @@
-import { Grid, Segment } from "semantic-ui-react";
+import { Grid } from "semantic-ui-react";
 import EventComments from "./EventComments";
 import EventDetailHeader from "./EventDetailHeader";
 import EventDetailInfo from "./EventDetailInfo";

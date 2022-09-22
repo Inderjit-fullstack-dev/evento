@@ -37,7 +37,7 @@ const EventForm = () => {
     if (selectedEvent) {
       setValues(selectedEvent);
     }
-  }, [selectedEvent?.id]);
+  }, [selectedEvent]);
 
   const getFormLabel = () => {
     return selectedEvent ? "Update" : "Create";

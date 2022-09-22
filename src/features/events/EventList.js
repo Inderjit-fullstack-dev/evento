@@ -1,7 +1,16 @@
 import { Message } from "semantic-ui-react";
 import EventItem from "./EventItem";
+import { useDispatch, useSelector } from "react-redux";
+import { setEvents } from "../../core/redux/slices/eventSlice";
+import { sampleData } from "../../core/services/sampleData";
+import { useEffect } from "react";
 
-const EventList = ({ events }) => {
+const EventList = () => {
+  const dispatch = useDispatch();
+  const events = useSelector((state) => state.event.events);
+  useEffect(() => {
+    dispatch(setEvents(sampleData));
+  }, [dispatch]);
   return (
     <>
       {events.length === 0 && (

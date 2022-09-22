@@ -1,11 +1,4 @@
-import {
-  Button,
-  Form,
-  Grid,
-  Header,
-  Segment,
-  Comment,
-} from "semantic-ui-react";
+import { Button, Form, Header, Segment, Comment } from "semantic-ui-react";
 
 const EventComments = () => {
   return (
