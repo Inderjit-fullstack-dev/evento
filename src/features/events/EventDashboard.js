@@ -26,11 +26,11 @@ const EventDashboard = (props) => {
         <EventList events={events} />
       </Grid.Column>
       <Grid.Column width={6}>
-        <EventForm
+        {/* <EventForm
           {...props}
           handleSetForm={props.handleSetForm}
           onFormSubmit={(data) => handleFormSubmit(data)}
-        />
+        /> */}
       </Grid.Column>
     </Grid>
   );

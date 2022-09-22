@@ -4,13 +4,16 @@ import App from "./app/layout/App";
 import "semantic-ui-css/semantic.min.css";
 import { Provider } from "react-redux";
 import store from "./core/redux/store";
+import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 function render() {
   root.render(
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
   );
 }

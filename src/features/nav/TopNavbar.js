@@ -1,26 +1,16 @@
-import { Menu, Container, Button, MenuItem } from "semantic-ui-react";
-
-const TopNavbar = ({ handleSetForm }) => {
+import { Menu, Container } from "semantic-ui-react";
+import { Link } from "react-router-dom";
+import SignedOutLinks from "./SignedOutLinks";
+import SignedInLinks from "./SignedInLinks";
+const TopNavbar = () => {
   return (
     <Menu inverted fixed="top" secondary color="violet">
       <Container>
-        <Menu.Item header>
+        <Menu.Item header as={Link} to="/">
           <img src="/assets/images/logo.png" alt="Evento" />
         </Menu.Item>
-        <MenuItem name="Home" />
-        <Menu.Item>
-          <Button
-            content="Create Event"
-            inverted
-            onClick={() => handleSetForm(true)}
-          />
-        </Menu.Item>
-        <Menu.Menu position="right">
-          <Menu.Item>
-            <Button content="Login" inverted />
-            <Button content="Signup" inverted style={{ marginLeft: "5px" }} />
-          </Menu.Item>
-        </Menu.Menu>
+        <SignedOutLinks />
+        <SignedInLinks />
       </Container>
     </Menu>
   );
