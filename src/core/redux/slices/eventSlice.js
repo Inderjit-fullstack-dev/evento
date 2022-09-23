@@ -27,10 +27,12 @@ const eventsSlice = createSlice({
       };
     },
     updateEvent: (state, action) => {
-      //const event = state.events.find((x) => x.id === action.payload.id);
       return {
         ...state,
-        events: [...state.events],
+        events: [
+          ...state.events.filter((e) => e.id !== action.payload.id),
+          action.payload,
+        ],
       };
     },
   },

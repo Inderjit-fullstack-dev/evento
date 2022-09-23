@@ -1,6 +1,7 @@
+import { Formik, Form, Field } from "formik";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Segment, Header, Form, Button } from "semantic-ui-react";
+import { Segment, Header, FormField, Button } from "semantic-ui-react";
 import { addEvent, updateEvent } from "../../core/redux/slices/eventSlice";
 
 const EventForm = () => {
@@ -18,21 +19,6 @@ const EventForm = () => {
 
   const [values, setValues] = useState(initialState);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setValues({ ...values, [name]: value });
-  };
-
-  const handleSubmit = () => {
-    //onFormSubmit(values);
-    if (selectedEvent) {
-      dispatch(updateEvent({ id: values.id, data: values }));
-    } else {
-      dispatch(addEvent(values));
-      setValues(initialState);
-    }
-  };
-
   useEffect(() => {
     if (selectedEvent) {
       setValues(selectedEvent);
@@ -46,76 +32,51 @@ const EventForm = () => {
   return (
     <Segment clearing={true}>
       <Header content={`${getFormLabel()} Event`} />
-      <Form onSubmit={handleSubmit}>
-        <Form.Field>
-          <label htmlFor="category">Category</label>
-          <input
-            type="text"
-            name="category"
-            id="category"
-            value={values.category}
-            onChange={handleInputChange}
+      <Formik
+        initialValues={initialState}
+        onSubmit={(values) => {
+          console.log(values);
+        }}
+      >
+        <Form className="ui form">
+          <FormField>
+            <label htmlFor="category">Category</label>
+            <Field type="text" name="category" id="category" />
+          </FormField>
+          <FormField>
+            <label htmlFor="title">Title</label>
+            <Field type="text" name="title" id="title" />
+          </FormField>
+          <FormField>
+            <label htmlFor="date">Date</label>
+            <Field type="date" name="date" id="date" />
+          </FormField>
+          <FormField>
+            <label htmlFor="city">City</label>
+            <Field type="text" name="city" id="city" />
+          </FormField>
+          <FormField>
+            <label htmlFor="venue">Venue</label>
+            <Field type="text" name="venue" id="venue" />
+          </FormField>
+          <FormField>
+            <label htmlFor="description">Description</label>
+            <Field
+              as="textarea"
+              rows={2}
+              style={{ resize: "none" }}
+              name="description"
+              id="description"
+            />
+          </FormField>
+          <Button
+            type="submit"
+            color="black"
+            content={`${getFormLabel()} Event`}
+            floated="right"
           />
-        </Form.Field>
-        <Form.Field>
-          <label htmlFor="title">Name</label>
-          <input
-            type="text"
-            name="title"
-            id="title"
-            value={values.title}
-            onChange={handleInputChange}
-          />
-        </Form.Field>
-        <Form.Field>
-          <label htmlFor="date">Date</label>
-          <input
-            type="date"
-            name="date"
-            id="date"
-            value={values.date}
-            onChange={handleInputChange}
-            placeholder=""
-          />
-        </Form.Field>
-        <Form.Field>
-          <label htmlFor="city">City</label>
-          <input
-            type="text"
-            name="city"
-            id="city"
-            value={values.city}
-            onChange={handleInputChange}
-          />
-        </Form.Field>
-        <Form.Field>
-          <label htmlFor="venue">Venue</label>
-          <input
-            type="text"
-            id="venue"
-            name="venue"
-            value={values.venue}
-            onChange={handleInputChange}
-          />
-        </Form.Field>
-        <Form.Field>
-          <label htmlFor="description">Description</label>
-          <textarea
-            id="description"
-            name="description"
-            value={values.description}
-            onChange={handleInputChange}
-            style={{ resize: "none" }}
-            rows={2}
-          />
-        </Form.Field>
-        <Button content="Close" floated="right" />
-        <Button
-          color="black"
-          content={`${getFormLabel()} Event`}
-          floated="right"
-        />
-      </Form>
+        </Form>
+      </Formik>
     </Segment>
   );
 };

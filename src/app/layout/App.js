@@ -2,7 +2,12 @@ import EventDashboard from "../../features/events/EventDashboard";
 import TopNavbar from "../../features/nav/TopNavbar";
 import { Container } from "semantic-ui-react";
 import { useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import {
+  Route,
+  Routes,
+  ScrollRestoration,
+  useLocation,
+} from "react-router-dom";
 import EventForm from "../../features/events/EventForm";
 import EventDetailPage from "../../features/events/eventDetail/EventDetailPage";
 import PageNotFound from "../../features/errors/PageNotFound";
