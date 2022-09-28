@@ -4,6 +4,27 @@ html {
 body {
   background-color: #f5f6fa !important;
 }
+.top-header {
+  background: #2866d3 !important;
+}
+.top-header .dropdown {
+  color: #fff !important;
+  font-family: "Noto Sans", sans-serif;
+}
 .ui.main.container {
   margin-top: 71px;
+}
+.required {
+  color: #db2828;
+  font-size: 15px;
+}
+.error-message {
+  position: relative;
+  margin-top: 5px !important;
+  background: #fff;
+}
+
+.date-picker-wrapper {
+  z-index: 1 !important;
+  width: 100%;
 }

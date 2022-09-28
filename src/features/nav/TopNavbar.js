@@ -4,7 +4,7 @@ import SignedOutLinks from "./SignedOutLinks";
 import SignedInLinks from "./SignedInLinks";
 const TopNavbar = () => {
   return (
-    <Menu inverted fixed="top" secondary color="violet">
+    <Menu fixed="top" secondary className="top-header">
       <Container>
         <Menu.Item header as={Link} to="/">
           <img src="/assets/images/logo.png" alt="Evento" />

@@ -8,9 +8,6 @@ import { useEffect } from "react";
 const EventList = () => {
   const dispatch = useDispatch();
   const events = useSelector((state) => state.event.events);
-  useEffect(() => {
-    dispatch(setEvents(sampleData));
-  }, [dispatch]);
   return (
     <>
       {events.length === 0 && (

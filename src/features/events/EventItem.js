@@ -6,6 +6,7 @@ import {
   setSelectedEvent,
 } from "../../core/redux/slices/eventSlice";
 import EventAtendees from "./EventAttendees";
+import { format } from "date-fns";
 
 const EventItem = ({ event }) => {
   const [confirmShow, setConfirmShow] = useState(false);
@@ -37,7 +38,7 @@ const EventItem = ({ event }) => {
         </Segment>
         <Segment>
           <span>
-            <Icon name="clock" /> {event.date}
+            <Icon name="clock" /> {format(event.date, "MMMM d, yyyy hh:mm a")}
             <Icon name="marker" /> {event.venue}
           </span>
         </Segment>

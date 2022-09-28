@@ -7,7 +7,7 @@ const SignedInLinks = () => {
       <Dropdown text="Bob" pointing="top right">
         <Dropdown.Menu>
           <Dropdown.Item
-            text="Create Event"
+            text="Add Event"
             icon="calendar"
             as={Link}
             to="events/create"
